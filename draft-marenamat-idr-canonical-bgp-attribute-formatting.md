@@ -19,8 +19,7 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Canonical textual representation of BGP Path Attributes"
 category: info
 
 docname: draft-todo-yourname-protocol-latest
