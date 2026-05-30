@@ -9,7 +9,7 @@ Expires: 1 December 2026
 
 
         Canonical textual representation of BGP Path Attributes
-     draft-marenamat-idr-canonical-bgp-attribute-formatting-latest
+          draft-marenamat-idr-bgp-attribute-formatting-latest
 
 Abstract
 
@@ -31,11 +31,11 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://marenamat.github.io/ietf-draft-marenamat-idr-canonical-bgp-
-   attribute-formatting/draft-marenamat-idr-canonical-bgp-attribute-
-   formatting.html.  Status information for this document may be found
-   at https://datatracker.ietf.org/doc/draft-marenamat-idr-canonical-
-   bgp-attribute-formatting/.
+   https://marenamat.github.io/ietf-draft-marenamat-idr-bgp-attribute-
+   formatting/draft-marenamat-idr-bgp-attribute-formatting.html.  Status
+   information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-marenamat-idr-bgp-attribute-
+   formatting/.
 
    Discussion of this document takes place on the Inter-Domain Routing
    Working Group mailing list (mailto:idr@ietf.org), which is archived
@@ -43,8 +43,8 @@ About This Document
    https://www.ietf.org/mailman/listinfo/idr/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/marenamat/ietf-draft-marenamat-idr-canonical-bgp-
-   attribute-formatting.
+   https://github.com/marenamat/ietf-draft-marenamat-idr-bgp-attribute-
+   formatting.
 
 Status of This Memo
 
