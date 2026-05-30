@@ -2,7 +2,7 @@
 title: "Canonical textual representation of BGP Path Attributes"
 category: bcp
 
-docname: draft-marenamat-idr-canonical-bgp-attribute-formatting-latest
+docname: draft-marenamat-idr-bgp-attribute-formatting-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -20,8 +20,8 @@ venue:
   type: "Working Group"
   mail: "idr@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/idr/"
-  github: "marenamat/ietf-draft-marenamat-idr-canonical-bgp-attribute-formatting"
-  latest: "https://marenamat.github.io/ietf-draft-marenamat-idr-canonical-bgp-attribute-formatting/draft-marenamat-idr-canonical-bgp-attribute-formatting.html"
+  github: "marenamat/ietf-draft-marenamat-idr-bgp-attribute-formatting"
+  latest: "https://marenamat.github.io/ietf-draft-marenamat-idr-bgp-attribute-formatting/draft-marenamat-idr-bgp-attribute-formatting.html"
 
 author:
  -

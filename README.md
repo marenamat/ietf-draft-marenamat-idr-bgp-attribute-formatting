@@ -4,16 +4,16 @@
 
 This is the working area for the individual Internet-Draft, "Canonical textual representation of BGP Path Attributes".
 
-* [Editor's Copy](https://marenamat.github.io/ietf-draft-marenamat-idr-canonical-bgp-attribute-formatting/#go.draft-marenamat-idr-canonical-bgp-attribute-formatting.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-marenamat-idr-canonical-bgp-attribute-formatting)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-marenamat-idr-canonical-bgp-attribute-formatting)
-* [Compare Editor's Copy to Individual Draft](https://marenamat.github.io/ietf-draft-marenamat-idr-canonical-bgp-attribute-formatting/#go.draft-marenamat-idr-canonical-bgp-attribute-formatting.diff)
+* [Editor's Copy](https://marenamat.github.io/ietf-draft-marenamat-idr-bgp-attribute-formatting/#go.draft-marenamat-idr-bgp-attribute-formatting.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-marenamat-idr-bgp-attribute-formatting)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-marenamat-idr-bgp-attribute-formatting)
+* [Compare Editor's Copy to Individual Draft](https://marenamat.github.io/ietf-draft-marenamat-idr-bgp-attribute-formatting/#go.draft-marenamat-idr-bgp-attribute-formatting.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/marenamat/ietf-draft-marenamat-idr-canonical-bgp-attribute-formatting/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/marenamat/ietf-draft-marenamat-idr-bgp-attribute-formatting/blob/main/CONTRIBUTING.md).
 
 The contributing file also has tips on how to make contributions, if you
 don't already know how to do that.

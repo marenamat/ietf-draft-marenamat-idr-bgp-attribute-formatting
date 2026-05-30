@@ -18,7 +18,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-marenamat-idr-canonical-bgp-attribute-formatting.xml
+draft-marenamat-idr-bgp-attribute-formatting.xml
 package-lock.json
 report.xml
 !requirements.txt
