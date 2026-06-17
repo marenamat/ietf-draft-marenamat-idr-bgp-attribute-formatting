@@ -172,8 +172,8 @@ semantics was dependent on the letter case.
 
 # Simple Path Attributes
 
-The following attributes, are listed simply for the sake of completeness. Their
-formatting is simple and easy to model coherently.
+The following attributes are listed simply for the sake of completeness.
+Their formatting is either obvious or straightforward to model coherently.
 
 - Type 1 – `ORIGIN`
 - Type 3 – `NEXT_HOP`
@@ -183,6 +183,21 @@ formatting is simple and easy to model coherently.
 - Type 7 – `AGGREGATOR`
 - Type 9 – `ORIGINATOR_ID`
 - Type 10 – `CLUSTER_LIST`
+- Type 22 – `PMSI_TUNNEL`
+- Type 23 – Tunnel Encapsulation
+- Type 25 – Traffic Engineering
+- Type 26 – AIGP
+- Type 27 – PE Distinguisher Labels
+- Type 29 – Link State
+- Type 33 – BGPsec Path
+- Type 35 – Only to Customer
+- Type 36 – SFP
+
+For example, many of these are just an integer, and even a very complex
+attribute like `PMSI_TUNNEL` can be modelled as a key-value structure.
+
+Specifically, all attributes with a sub-TLV structure are expected to be
+modelled in a structured way.
 
 All unknown attributes are considered to be a binary blob, and with that,
 simple to format.
@@ -217,7 +232,7 @@ Note: The `AS_SET` and `AS_CONFED_SET` segments have been deprecated by
 the same way as unknown types. The implementation MAY, if configured so, replace
 the `unknown:1` and `unknown:4` by `set` and `confed-set`, respectively.
 
-# `COMMUNITIES` Attribute
+# `COMMUNITIES` Attribute {#communities-section}
 
 The `COMMUNITIES` attribute {{-bgp-communities}} is a set of uint32 values, which
 are semantically a pair of an AS number and an arbitrary uint16 value. Following the
@@ -234,7 +249,7 @@ The semantics stays the same.
 
 Example: `65544:6767`, `BLACKHOLE`
 
-# `EXTENDED_COMMUNITIES` Attribute
+# `EXTENDED_COMMUNITIES` Attribute {#extended-communitites-section}
 
 The `EXTENDED_COMMUNITIES` attribute {{-bgp-extended-communities}} is a set of
 uint64 values with a complicated structure. Copying a modified schema from
@@ -478,6 +493,18 @@ Generic Transitive Extended Community Part 2 (Type 0x81)
 Generic Transitive Extended Community Part 3 (Type 0x82)
 -->
 
+
+# `LARGE_COMMUNITY` Attribute
+
+The `LARGE_COMMUNITY` attribute {{-bgp-large-communities}} is a set of uint32 triplets.
+First of these is an AS number (Global Administrator), and the two others bear
+no special semantics.
+
+While this attribute could be modeled easily as a set of uint32 triplets, people tend
+to display large communities in a similar way to Communities ({{communities-section}})
+and Extended Communities ({{extended-communities-section}}), and therefore
+it is acceptable to display each triplet as a set of three integers separated by colons
+(ASCII 58).
 
 # Security Considerations
 
