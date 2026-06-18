@@ -4,8 +4,8 @@
 
 Inter-Domain Routing                                          M. Matejka
 Internet-Draft                                                    CZ.NIC
-Intended status: Standards Track                            15 June 2026
-Expires: 17 December 2026
+Intended status: Standards Track                            18 June 2026
+Expires: 20 December 2026
 
 
         Canonical textual representation of BGP Path Attributes
@@ -70,7 +70,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 December 2026.
+   This Internet-Draft will expire on 20 December 2026.
 
 Copyright Notice
 
@@ -115,24 +115,30 @@ Table of Contents
        7.6.1.  ESI Label Extended Community
        7.6.2.  ES-Import Route Target Extended Community
        7.6.3.  MAC Mobility Extended Community
-   8.  Security Considerations
-   9.  IANA Considerations
-     9.1.  BGP Well-known Communities
-     9.2.  Registries for BGP Extended Communities
-       9.2.1.  Transitive Two-Octet AS-Specific Extended Community
+   8.  IPv6 Address Specific Extended Community Attribute
+     8.1.  Future IPv6 Address Specific Extended Community Sub-Type
+           definitions
+   9.  LARGE_COMMUNITY Attribute
+   10. Security Considerations
+   11. IANA Considerations
+     11.1.  BGP Well-known Communities
+     11.2.  Registries for BGP Extended Communities
+       11.2.1.  Transitive Two-Octet AS-Specific Extended Community
                Sub-Types
-       9.2.2.  Transitive IPv4-Address-Specific Extended Community
+       11.2.2.  Transitive IPv4-Address-Specific Extended Community
                Sub-Types
-       9.2.3.  Transitive Four-Octet AS-Specific Extended Community
+       11.2.3.  Transitive Four-Octet AS-Specific Extended Community
                Sub-Types
-       9.2.4.  Transitive Opaque Extended Community Sub-Types
-       9.2.5.  EVPN Extended Community Sub-Types
-     9.3.  Registry for BGP Data Collection Communities
-     9.4.  Registry for Context-Specific Label Space ID Type
-     9.5.  Registry for OSPFv2 Link State (LS) Type
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+       11.2.4.  Transitive Opaque Extended Community Sub-Types
+       11.2.5.  EVPN Extended Community Sub-Types
+     11.3.  Transitive IPv6-Address-Specific Extended Community
+            Sub-Types
+     11.4.  Registry for BGP Data Collection Communities
+     11.5.  Registry for Context-Specific Label Space ID Type
+     11.6.  Registry for OSPFv2 Link State (LS) Type
+   12. References
+     12.1.  Normative References
+     12.2.  Informative References
    Acknowledgments
    Author's Address
 
@@ -210,7 +216,7 @@ Table of Contents
 
    2.  Enumeration values SHOULD be displayed as the item identifier, as
        specified in their appropriate tables.  Many of these are to be
-       (FIXME) updated by this document, Section 9, to include such
+       (FIXME) updated by this document, Section 11, to include such
        identifiers suitable for canonical representation.
 
        Unknown enumeration values SHOULD be displayed as a single
@@ -221,7 +227,7 @@ Table of Contents
        absent flag MAY be displayed.  They SHOULD be represented as
        their flag identifiers, as specified in their appropriate tables.
        Many of these are to be (FIXME) updated by this document,
-       Section 9, to include such identifiers suitable for canonical
+       Section 11, to include such identifiers suitable for canonical
        representation.  Flags SHOULD be displayed in the order from the
        most significant to least significant bit.
 
@@ -239,7 +245,15 @@ Table of Contents
    5.  Values specified to be displayed in hexadecimal SHOULD be
        displayed padded by zeros to all significant bits.
 
-   6.  Values specified as reserved SHOULD NOT be displayed (should be
+   6.  IPv6 addresses SHOULD be displayed in the short form, as
+       specified in Section 2.2 of [RFC4291], paragraph 2, and if not
+       standalone, they SHOULD be surrounded by square braces (ASCII 91
+       and 93).
+
+   7.  IPv4 addresses SHOULD be displayed in the standard form of four
+       integers (see above) delimited by dots (ASCII 46).
+
+   8.  Values specified as reserved SHOULD NOT be displayed (should be
        skipped).  If these values are set to non-default values, the
        whole containing attribute structure SHOULD be displayed as a
        sequence of octets in hexadecimal, prefixed by malformed.  The
@@ -248,9 +262,9 @@ Table of Contents
 
 4.  Simple Path Attributes
 
-   The following attributes, are listed simply for the sake of
-   completeness.  Their formatting is simple and easy to model
-   coherently.
+   The following attributes are listed simply for the sake of
+   completeness.  Their formatting is either obvious or straightforward
+   to model coherently.
 
    *  Type 1 – ORIGIN
 
@@ -267,6 +281,39 @@ Table of Contents
    *  Type 9 – ORIGINATOR_ID
 
    *  Type 10 – CLUSTER_LIST
+
+   *  Type 22 – PMSI_TUNNEL
+
+   *  Type 23 – Tunnel Encapsulation
+
+   *  Type 24 – Traffic Engineering
+
+   *  Type 26 – AIGP
+
+   *  Type 27 – PE Distinguisher Labels
+
+   *  Type 29 – Link State
+
+   *  Type 33 – BGPsec Path
+
+   *  Type 35 – Only to Customer
+
+   *  Type 37 – SFP
+
+   *  Type 38 – BFD Discriminator
+
+   *  Type 40 – Prefix-SID
+
+   *  Type 41 – BIER
+
+   *  Type 128 – ATTR_SET
+
+   For example, many of these are just an integer, and even a very
+   complex attribute like PMSI_TUNNEL can be modelled as a key-value
+   structure.
+
+   Specifically, all attributes with a sub-TLV structure are expected to
+   be modelled in a structured way.
 
    All unknown attributes are considered to be a binary blob, and with
    that, simple to format.
@@ -348,11 +395,11 @@ Table of Contents
    Commonly, the lower octet of the Type is called Sub-Type, as in
    [RFC7153].
 
-   The canonical formatting is the Type displayed as an enumeration
-   value, and then the Value split to its semantic parts, as specified
-   in following subsections.  All the parts are displayed in order,
-   beginning with the Type identifier, and delimited by a single colon
-   (ASCII 58).
+   The canonical formatting of each value is the Type displayed as an
+   enumeration value, and then the Value split to its semantic parts, as
+   specified in following subsections.  All the parts are displayed in
+   order, beginning with the Type identifier, and delimited by a single
+   colon (ASCII 58).
 
    If the Type is unknown, the whole extended community value is
    displayed as unknown-transitive or unknown-non-transitive followed by
@@ -376,8 +423,8 @@ Table of Contents
       For Sub-Type codepoints with similar semantics across multiple
       high octets, it is RECOMMENDED to assign similar type identifiers.
 
-      Identifiers assigned by IANA MUST NOT begin with unknown- or
-      experimental-.
+      Identifiers assigned by IANA MUST NOT begin with unknown-,
+      experimental- or malformed-.
 
    For experimental types, an implementation MAY locally assign an
    identifier beginning with experimental-, and format these
@@ -397,7 +444,7 @@ Table of Contents
 
    *  2 octets of zeros (reserved)
 
-   *  5 bits of region identifier (Section 9.3)
+   *  5 bits of region identifier (Section 11.4)
 
    *  1 bit of satellite link flag (displayed as SAT if set to 1)
 
@@ -405,7 +452,7 @@ Table of Contents
       as defined in [ISO.3166-1.2006])
 
    There are also special values which are represented by a single
-   identifier from Section 9.3.
+   identifier from Section 11.4.
 
    The parser SHOULD also accept discontinued country codes, possibly
    with a warning.
@@ -436,7 +483,7 @@ Table of Contents
    The actual structure of the BGP Data Collection (Type 0x0108) Local
    Administrator value is, by [RFC4384]:
 
-   *  5 bits of region identifier (Section 9.3)
+   *  5 bits of region identifier (Section 11.4)
 
    *  1 bit of satellite link flag (displayed as SAT if set to 1)
 
@@ -444,7 +491,7 @@ Table of Contents
       as defined in [ISO.3166-1.2006])
 
    There are also special values which are represented by a single
-   identifier from Section 9.3.
+   identifier from Section 11.4.
 
    The parser SHOULD also accept discontinued country codes, possibly
    with a warning.
@@ -475,7 +522,7 @@ Table of Contents
    The actual structure of the BGP Data Collection (Type 0x0208) Local
    Administrator value is, by [RFC4384]:
 
-   *  5 bits of region identifier (Section 9.3)
+   *  5 bits of region identifier (Section 11.4)
 
    *  1 bit of satellite link flag (displayed as SAT if set to 1)
 
@@ -483,7 +530,7 @@ Table of Contents
       as defined in [ISO.3166-1.2006])
 
    There are also special values which are represented by a single
-   identifier from Section 9.3.
+   identifier from Section 11.4.
 
    The parser SHOULD also accept discontinued country codes, possibly
    with a warning.
@@ -531,7 +578,7 @@ Table of Contents
 OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS) Type, as specified by {{Section 5.5 of RFC4940}}.
 
    The Type is to be formatted as an identifier specified in
-   Section 9.5.  An unknown value of Type is to be formatted as a
+   Section 11.6.  An unknown value of Type is to be formatted as a
    decimal number with no leading zeros.
 
    The Options shall be formatted as flags as specified in Section 3.1.
@@ -560,7 +607,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    The actual structure of the Context-Specific Label Space ID Type
    (Type 0x0308) is, by [RFC9753], a 2-octet ID-Type (enumeration, see
-   Section 9.4) and a 4-octet ID-Value (integer).
+   Section 11.5) and a 4-octet ID-Value (integer).
 
    Note: For ID-Type zero (MPLS Label), Section 4.1 of [RFC9753] does
    not specify the value of the bottom 12 bits of the ID-Value.  This
@@ -599,19 +646,89 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    Example: mac-mobility:S:67, mac-mobility::42
 
-8.  Security Considerations
+8.  IPv6 Address Specific Extended Community Attribute
+
+   The IPv6 Address Specific Extended Community Attribute [RFC5701] is a
+   set of 20-octet values with a complicated structure.
+
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | 0x00 or 0x40  |    Sub-Type   |    Global Administrator       |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          Global Administrator (cont.)                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          Global Administrator (cont.)                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |          Global Administrator (cont.)                         |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | Global Administrator (cont.)  |    Local Administrator        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+   The formatting of this attribute generally follows the same principle
+   as the EXTENDED_COMMUNITIES, specified in Section 7.  Each value in
+   the list is split to its semantic parts.  All the parts are displayed
+   in order, beginning with the Sub-Type identifier, and delimited by a
+   single colon (ASCII 58).
+
+   If not specified otherwise, the Global Administrator field is
+   displayed as an IPv6 address, and the Local Administrator is
+   formatted as an integer (see Section 3.1).  No alternative formatting
+   is specified for any Sub-Type in this document.
+
+   If the Sub-Type itself is unknown, it is formatted as unknown-
+   transitive or unknown-non-transitive followed by the actual Sub-Type
+   value formatted as hexadecimal, and then the Global and Local
+   Administrator values as usual,
+
+8.1.  Future IPv6 Address Specific Extended Community Sub-Type
+      definitions
+
+   Every new definition of an IPv6 Address Specific Extended Community
+   Sub-Type MUST include its enumeration value identifier and a
+   specification of canonical textual representation of the value.
+   Hereby, a paragraph shall be appended to the Section 3 of [RFC5701]:
+
+      Every Sub-Type codepoint defined MUST specify a unique value of
+      the display format type identifier, together with the appropriate
+      canonical textual representation of the Value.
+
+      For Sub-Type codepoints with similar semantics differing only by
+      the transitivity, it is RECOMMENDED to assign similar type
+      identifiers.
+
+      Identifiers assigned by IANA MUST NOT begin with unknown-,
+      experimental- or malformed-.
+
+   For experimental types, an implementation MAY locally assign an
+   identifier beginning with experimental-, and format these
+   appropriately.
+
+9.  LARGE_COMMUNITY Attribute
+
+   The LARGE_COMMUNITY attribute [RFC8092] is a set of uint32 triplets.
+   First of these is an AS number (Global Administrator), and the two
+   others bear no special semantics.
+
+   While this attribute could be modeled easily as a set of uint32
+   triplets, people tend to display large communities in a similar way
+   to Communities (Section 6) and Extended Communities (Section 7), and
+   therefore it is acceptable to display each triplet as a set of three
+   integers separated by colons (ASCII 58).
+
+10.  Security Considerations
 
    There are no security considerations in formatting the path
    attributes.
 
-9.  IANA Considerations
+11.  IANA Considerations
 
-9.1.  BGP Well-known Communities
+11.1.  BGP Well-known Communities
 
    IANA is requested to rename the "Standby PE" BGP community value
    (0xFFFF0009) to STANDBY_PE.
 
-9.2.  Registries for BGP Extended Communities
+11.2.  Registries for BGP Extended Communities
 
    IANA is requested to add a column "Identifier" to all the Sub-Type
    registries as specified in Section 5.2 of [RFC7153].  The identifiers
@@ -620,7 +737,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    The following data should be used to fill the newly added columns.
 
-9.2.1.  Transitive Two-Octet AS-Specific Extended Community Sub-Types
+11.2.1.  Transitive Two-Octet AS-Specific Extended Community Sub-Types
 
      +================+========================+=====================+
      | Sub-Type Value | Name                   | Identifier          |
@@ -640,7 +757,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
                                   Table 1
 
-9.2.2.  Transitive IPv4-Address-Specific Extended Community Sub-Types
+11.2.2.  Transitive IPv4-Address-Specific Extended Community Sub-Types
 
    +==========+====================+===================================+
    | Sub-Type | Name               | Identifier                        |
@@ -673,7 +790,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    The IANA is hereby requested to fix the typo at 0x07 Name.
 
-9.2.3.  Transitive Four-Octet AS-Specific Extended Community Sub-Types
+11.2.3.  Transitive Four-Octet AS-Specific Extended Community Sub-Types
 
     +================+========================+=======================+
     | Sub-Type Value | Name                   | Identifier            |
@@ -691,7 +808,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
                                   Table 3
 
-9.2.4.  Transitive Opaque Extended Community Sub-Types
+11.2.4.  Transitive Opaque Extended Community Sub-Types
 
     +================+========================+======================+
     | Sub-Type Value | Name                   | Identifier           |
@@ -720,7 +837,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    (TODO)
 
-9.2.5.  EVPN Extended Community Sub-Types
+11.2.5.  EVPN Extended Community Sub-Types
 
      +================+=========================+===================+
      | Sub-Type Value | Name                    | Identifier        |
@@ -758,7 +875,30 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
 
    (TODO)
 
-9.3.  Registry for BGP Data Collection Communities
+11.3.  Transitive IPv6-Address-Specific Extended Community Sub-Types
+
+   In the same set of registries as Extended Communities, there is an
+   IPv6-Address Specific Extended Community Sub-Types Registry.  IANA is
+   requested to add a column "Identifier" to this registry, which is
+   populated as follows:
+
+    +========+====================+===================================+
+    | Type   | Name               | Identifier                        |
+    | Value  |                    |                                   |
+    +========+====================+===================================+
+    | 0x0002 | Route Target       | route-target-ipv6                 |
+    +--------+--------------------+-----------------------------------+
+    | 0x0003 | Route Origin       | route-origin-ipv6                 |
+    +--------+--------------------+-----------------------------------+
+    | 0x000B | VRF Route Import   | vrf-route-import-ipv6             |
+    +--------+--------------------+-----------------------------------+
+    | 0x0012 | Inter-Area P2MP    | p2mp-inter-area-segmented-nh-ipv6 |
+    |        | Segmented Next-Hop |                                   |
+    +--------+--------------------+-----------------------------------+
+
+                                  Table 6
+
+11.4.  Registry for BGP Data Collection Communities
 
    IANA is requested to add a column "Identifier" to the BGP Data
    Collection Standard Communities Registry, which is populated as
@@ -782,7 +922,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
       | 0000000000000110 | Upstream Routes | upstream               |
       +------------------+-----------------+------------------------+
 
-                                  Table 6
+                                  Table 7
 
    IANA is requested to add a column "Identifier" to the Region
    Identifiers Registry, which is populated as follows:
@@ -805,9 +945,9 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
          | 00111 | North America                   | NA         |
          +-------+---------------------------------+------------+
 
-                                 Table 7
+                                 Table 8
 
-9.4.  Registry for Context-Specific Label Space ID Type
+11.5.  Registry for Context-Specific Label Space ID Type
 
    IANA is requested to add a column "Identifier" to the Context-
    Specific Label Space ID Type Registry, which is populated as follows:
@@ -818,9 +958,9 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
                     | 0     | MPLS Label | mpls-label |
                     +-------+------------+------------+
 
-                                  Table 8
+                                  Table 9
 
-9.5.  Registry for OSPFv2 Link State (LS) Type
+11.6.  Registry for OSPFv2 Link State (LS) Type
 
    IANA is requested to add a column "Identifier" to the OSPFv2 Link
    State (LS) Type, as specified in [RFC4940], which is populated as
@@ -850,11 +990,11 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
           | 11    | AS-scoped Opaque LSA     | as-opaque        |
           +-------+--------------------------+------------------+
 
-                                  Table 9
+                                  Table 10
 
-10.  References
+12.  References
 
-10.1.  Normative References
+12.1.  Normative References
 
    [ISO.3166-1.2006]
               International Organization for Standardization, "Codes for
@@ -874,6 +1014,10 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
               Border Gateway Protocol 4 (BGP-4)", RFC 4271,
               DOI 10.17487/RFC4271, January 2006,
               <https://www.rfc-editor.org/rfc/rfc4271>.
+
+   [RFC4291]  Hinden, R. and S. Deering, "IP Version 6 Addressing
+              Architecture", RFC 4291, DOI 10.17487/RFC4291, February
+              2006, <https://www.rfc-editor.org/rfc/rfc4291>.
 
    [RFC4360]  Sangli, S., Tappan, D., and Y. Rekhter, "BGP Extended
               Communities Attribute", RFC 4360, DOI 10.17487/RFC4360,
@@ -901,6 +1045,16 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
               Specific BGP Extended Community", RFC 5668,
               DOI 10.17487/RFC5668, October 2009,
               <https://www.rfc-editor.org/rfc/rfc5668>.
+
+   [RFC5701]  Rekhter, Y., "IPv6 Address Specific BGP Extended Community
+              Attribute", RFC 5701, DOI 10.17487/RFC5701, November 2009,
+              <https://www.rfc-editor.org/rfc/rfc5701>.
+
+   [RFC6368]  Marques, P., Raszuk, R., Patel, K., Kumaki, K., and T.
+              Yamagata, "Internal BGP as the Provider/Customer Edge
+              Protocol for BGP/MPLS IP Virtual Private Networks (VPNs)",
+              RFC 6368, DOI 10.17487/RFC6368, September 2011,
+              <https://www.rfc-editor.org/rfc/rfc6368>.
 
    [RFC7153]  Rosen, E. and Y. Rekhter, "IANA Registries for BGP
               Extended Communities", RFC 7153, DOI 10.17487/RFC7153,
@@ -951,7 +1105,7 @@ OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS)
               RFC 9774, DOI 10.17487/RFC9774, May 2025,
               <https://www.rfc-editor.org/rfc/rfc9774>.
 
-10.2.  Informative References
+12.2.  Informative References
 
    [I-D.knoll-idr-cos-interconnect]
               Knoll, T. M., "BGP Class of Service Interconnection", Work

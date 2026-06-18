@@ -20,25 +20,26 @@ textual formatting of extended communities specified there.
 community registry. 
        (REMOVE THIS) This document is incomplete and needs completing the tables. 
     " name="description">
-<meta content="xml2rfc 3.33.0" name="generator">
+<meta content="xml2rfc 3.34.0" name="generator">
 <meta content="text representation" name="keyword">
 <meta content="BGP" name="keyword">
 <meta content="attributes" name="keyword">
 <meta content="communities" name="keyword">
 <meta content="draft-marenamat-idr-bgp-attribute-formatting-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.33.0
-    Python 3.12.13
-    ConfigArgParse 1.7
+  xml2rfc 3.34.0
+    Python 3.14.5
+    ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 6.0.2
-    platformdirs 4.9.6
+    lxml 6.1.1
+    natsort 8.4.0
+    platformdirs 4.10.0
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.7.0
+    wcwidth 0.8.1
 -->
 <link href="draft-marenamat-idr-bgp-attribute-formatting.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1061,7 +1062,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Matejka</td>
-<td class="center">Expires 17 December 2026</td>
+<td class="center">Expires 20 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1074,12 +1075,12 @@ svg {
 <dd class="internet-draft">draft-marenamat-idr-bgp-attribute-formatting-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-15" class="published">15 June 2026</time>
+<time datetime="2026-06-18" class="published">18 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-17">17 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-20">20 December 2026</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1140,7 +1141,7 @@ community registry.<a href="#section-abstract-5" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 20 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1253,61 +1254,75 @@ community registry.<a href="#section-abstract-5" class="pilcrow">¶</a></p>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-ipv6-address-specific-exten" class="internal xref">IPv6 Address Specific Extended Community Attribute</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-future-ipv6-address-specifi" class="internal xref">Future IPv6 Address Specific Extended Community Sub-Type definitions</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-large_community-attribute" class="internal xref"><code>LARGE_COMMUNITY</code> Attribute</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-bgp-well-known-communities" class="internal xref">BGP Well-known Communities</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-bgp-well-known-communities" class="internal xref">BGP Well-known Communities</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
-                <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-registries-for-bgp-extended" class="internal xref">Registries for BGP Extended Communities</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-registries-for-bgp-extended" class="internal xref">Registries for BGP Extended Communities</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.1">
-                    <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#section-9.2.1" class="auto internal xref">9.2.1</a>.  <a href="#name-transitive-two-octet-as-spe" class="internal xref">Transitive Two-Octet AS-Specific Extended Community Sub-Types</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="auto internal xref">11.2.1</a>.  <a href="#name-transitive-two-octet-as-spe" class="internal xref">Transitive Two-Octet AS-Specific Extended Community Sub-Types</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.2">
-                    <p id="section-toc.1-1.9.2.2.2.2.1"><a href="#section-9.2.2" class="auto internal xref">9.2.2</a>.  <a href="#name-transitive-ipv4-address-spe" class="internal xref">Transitive IPv4-Address-Specific Extended Community Sub-Types</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="auto internal xref">11.2.2</a>.  <a href="#name-transitive-ipv4-address-spe" class="internal xref">Transitive IPv4-Address-Specific Extended Community Sub-Types</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.3">
-                    <p id="section-toc.1-1.9.2.2.2.3.1"><a href="#section-9.2.3" class="auto internal xref">9.2.3</a>.  <a href="#name-transitive-four-octet-as-sp" class="internal xref">Transitive Four-Octet AS-Specific Extended Community Sub-Types</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+                    <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-11.2.3" class="auto internal xref">11.2.3</a>.  <a href="#name-transitive-four-octet-as-sp" class="internal xref">Transitive Four-Octet AS-Specific Extended Community Sub-Types</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.4">
-                    <p id="section-toc.1-1.9.2.2.2.4.1"><a href="#section-9.2.4" class="auto internal xref">9.2.4</a>.  <a href="#name-transitive-opaque-extended-" class="internal xref">Transitive Opaque Extended Community Sub-Types</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.4">
+                    <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#section-11.2.4" class="auto internal xref">11.2.4</a>.  <a href="#name-transitive-opaque-extended-" class="internal xref">Transitive Opaque Extended Community Sub-Types</a></p>
 </li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.5">
-                    <p id="section-toc.1-1.9.2.2.2.5.1"><a href="#section-9.2.5" class="auto internal xref">9.2.5</a>.  <a href="#name-evpn-extended-community-sub" class="internal xref">EVPN Extended Community Sub-Types</a></p>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2.2.5">
+                    <p id="section-toc.1-1.11.2.2.2.5.1"><a href="#section-11.2.5" class="auto internal xref">11.2.5</a>.  <a href="#name-evpn-extended-community-sub" class="internal xref">EVPN Extended Community Sub-Types</a></p>
 </li>
                 </ul>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
-                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-registry-for-bgp-data-colle" class="internal xref">Registry for BGP Data Collection Communities</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
+                <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-transitive-ipv6-address-spe" class="internal xref">Transitive IPv6-Address-Specific Extended Community Sub-Types</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
-                <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-registry-for-context-specif" class="internal xref">Registry for Context-Specific Label Space ID Type</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.4">
+                <p id="section-toc.1-1.11.2.4.1"><a href="#section-11.4" class="auto internal xref">11.4</a>.  <a href="#name-registry-for-bgp-data-colle" class="internal xref">Registry for BGP Data Collection Communities</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
-                <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-registry-for-ospfv2-link-st" class="internal xref">Registry for OSPFv2 Link State (LS) Type</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.5">
+                <p id="section-toc.1-1.11.2.5.1"><a href="#section-11.5" class="auto internal xref">11.5</a>.  <a href="#name-registry-for-context-specif" class="internal xref">Registry for Context-Specific Label Space ID Type</a></p>
 </li>
-            </ul>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
-                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
-                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.6">
+                <p id="section-toc.1-1.11.2.6.1"><a href="#section-11.6" class="auto internal xref">11.6</a>.  <a href="#name-registry-for-ospfv2-link-st" class="internal xref">Registry for OSPFv2 Link State (LS) Type</a></p>
 </li>
             </ul>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1379,7 +1394,7 @@ no leading zeros.<a href="#section-3.1-1.1.1" class="pilcrow">¶</a></p>
           <li id="section-3.1-1.2">
             <p id="section-3.1-1.2.1">Enumeration values <span class="bcp14">SHOULD</span> be displayed as the item identifier, as specified
 in their appropriate tables.  Many of these are to be (FIXME) updated by this document,
-<a href="#iana-considerations" class="auto internal xref">Section 9</a>, to include such identifiers suitable for canonical representation.<a href="#section-3.1-1.2.1" class="pilcrow">¶</a></p>
+<a href="#iana-considerations" class="auto internal xref">Section 11</a>, to include such identifiers suitable for canonical representation.<a href="#section-3.1-1.2.1" class="pilcrow">¶</a></p>
 <p id="section-3.1-1.2.2">
 Unknown enumeration values <span class="bcp14">SHOULD</span> be displayed as a single integer in decimal
 notation with no leading zeros.<a href="#section-3.1-1.2.2" class="pilcrow">¶</a></p>
@@ -1389,7 +1404,7 @@ notation with no leading zeros.<a href="#section-3.1-1.2.2" class="pilcrow">¶</
 or absent (set to 0). If appropriate, even an absent flag <span class="bcp14">MAY</span> be displayed.
 They <span class="bcp14">SHOULD</span> be represented as their flag identifiers, as specified in their
 appropriate tables. Many of these are to be (FIXME) updated by this document,
-<a href="#iana-considerations" class="auto internal xref">Section 9</a>, to include such identifiers suitable for canonical
+<a href="#iana-considerations" class="auto internal xref">Section 11</a>, to include such identifiers suitable for canonical
 representation. Flags <span class="bcp14">SHOULD</span> be displayed in the order from the most
 significant to least significant bit.<a href="#section-3.1-1.3.1" class="pilcrow">¶</a></p>
 <p id="section-3.1-1.3.2">
@@ -1408,11 +1423,20 @@ representation.<a href="#section-3.1-1.4.1" class="pilcrow">¶</a></p>
 zeros to all significant bits.<a href="#section-3.1-1.5.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-3.1-1.6">
-            <p id="section-3.1-1.6.1">Values specified as reserved <span class="bcp14">SHOULD NOT</span> be displayed (should be skipped).
+            <p id="section-3.1-1.6.1">IPv6 addresses <span class="bcp14">SHOULD</span> be displayed in the short form, as specified in
+<span><a href="https://rfc-editor.org/rfc/rfc4291#section-2.2" class="relref">Section 2.2</a> of [<a href="#RFC4291" class="cite xref">RFC4291</a>]</span>, paragraph 2, and if not standalone, they <span class="bcp14">SHOULD</span> be
+surrounded by square braces (ASCII 91 and 93).<a href="#section-3.1-1.6.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.1-1.7">
+            <p id="section-3.1-1.7.1">IPv4 addresses <span class="bcp14">SHOULD</span> be displayed in the standard form of four integers
+(see above) delimited by dots (ASCII 46).<a href="#section-3.1-1.7.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-3.1-1.8">
+            <p id="section-3.1-1.8.1">Values specified as reserved <span class="bcp14">SHOULD NOT</span> be displayed (should be skipped).
 If these values are set to non-default values, the whole containing
 attribute structure <span class="bcp14">SHOULD</span> be displayed as a sequence of octets in hexadecimal,
 prefixed by <code>malformed</code>. The implementation <span class="bcp14">MAY</span> have configuration options
-to ignore non-default reserved values.<a href="#section-3.1-1.6.1" class="pilcrow">¶</a></p>
+to ignore non-default reserved values.<a href="#section-3.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
         </ol>
 </section>
@@ -1424,8 +1448,8 @@ to ignore non-default reserved values.<a href="#section-3.1-1.6.1" class="pilcro
       <h2 id="name-simple-path-attributes">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-simple-path-attributes" class="section-name selfRef">Simple Path Attributes</a>
       </h2>
-<p id="section-4-1">The following attributes, are listed simply for the sake of completeness. Their
-formatting is simple and easy to model coherently.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">The following attributes are listed simply for the sake of completeness.
+Their formatting is either obvious or straightforward to model coherently.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
           <p id="section-4-2.1.1">Type 1 – <code>ORIGIN</code><a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
@@ -1451,9 +1475,52 @@ formatting is simple and easy to model coherently.<a href="#section-4-1" class="
         <li class="normal" id="section-4-2.8">
           <p id="section-4-2.8.1">Type 10 – <code>CLUSTER_LIST</code><a href="#section-4-2.8.1" class="pilcrow">¶</a></p>
 </li>
+        <li class="normal" id="section-4-2.9">
+          <p id="section-4-2.9.1">Type 22 – <code>PMSI_TUNNEL</code><a href="#section-4-2.9.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.10">
+          <p id="section-4-2.10.1">Type 23 – Tunnel Encapsulation<a href="#section-4-2.10.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.11">
+          <p id="section-4-2.11.1">Type 24 – Traffic Engineering<a href="#section-4-2.11.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.12">
+          <p id="section-4-2.12.1">Type 26 – AIGP<a href="#section-4-2.12.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.13">
+          <p id="section-4-2.13.1">Type 27 – PE Distinguisher Labels<a href="#section-4-2.13.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.14">
+          <p id="section-4-2.14.1">Type 29 – Link State<a href="#section-4-2.14.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.15">
+          <p id="section-4-2.15.1">Type 33 – BGPsec Path<a href="#section-4-2.15.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.16">
+          <p id="section-4-2.16.1">Type 35 – Only to Customer<a href="#section-4-2.16.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.17">
+          <p id="section-4-2.17.1">Type 37 – SFP<a href="#section-4-2.17.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.18">
+          <p id="section-4-2.18.1">Type 38 – BFD Discriminator<a href="#section-4-2.18.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.19">
+          <p id="section-4-2.19.1">Type 40 – Prefix-SID<a href="#section-4-2.19.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.20">
+          <p id="section-4-2.20.1">Type 41 – BIER<a href="#section-4-2.20.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-4-2.21">
+          <p id="section-4-2.21.1">Type 128 – <code>ATTR_SET</code><a href="#section-4-2.21.1" class="pilcrow">¶</a></p>
+</li>
       </ul>
-<p id="section-4-3">All unknown attributes are considered to be a binary blob, and with that,
-simple to format.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-3">For example, many of these are just an integer, and even a very complex
+attribute like <code>PMSI_TUNNEL</code> can be modelled as a key-value structure.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">Specifically, all attributes with a sub-TLV structure are expected to be
+modelled in a structured way.<a href="#section-4-4" class="pilcrow">¶</a></p>
+<p id="section-4-5">All unknown attributes are considered to be a binary blob, and with that,
+simple to format.<a href="#section-4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="aspath-attribute">
@@ -1483,7 +1550,7 @@ the same way as unknown types. The implementation <span class="bcp14">MAY</span>
 the <code>unknown:1</code> and <code>unknown:4</code> by <code>set</code> and <code>confed-set</code>, respectively.<a href="#section-5-8" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="communities-attribute">
+<div id="communities-section">
 <section id="section-6">
       <h2 id="name-communities-attribute">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-communities-attribute" class="section-name selfRef"><code>COMMUNITIES</code> Attribute</a>
@@ -1501,7 +1568,7 @@ The semantics stays the same.<a href="#section-6-3" class="pilcrow">¶</a></p>
 <p id="section-6-4">Example: <code>65544:6767</code>, <code>BLACKHOLE</code><a href="#section-6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="extendedcommunities-attribute">
+<div id="extended-communities-section">
 <section id="section-7">
       <h2 id="name-extended_communities-attrib">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-extended_communities-attrib" class="section-name selfRef"><code>EXTENDED_COMMUNITIES</code> Attribute</a>
@@ -1525,7 +1592,7 @@ therefore it is assumed that the Type is always extended to 2 octets.<a href="#s
 </pre><a href="#section-7-2" class="pilcrow">¶</a>
 </div>
 <p id="section-7-3">Commonly, the lower octet of the Type is called Sub-Type, as in <span>[<a href="#RFC7153" class="cite xref">RFC7153</a>]</span>.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">The canonical formatting is the Type displayed as an enumeration value,
+<p id="section-7-4">The canonical formatting of each value is the Type displayed as an enumeration value,
 and then the Value split to its semantic parts, as specified in following
 subsections. All the parts are displayed in order, beginning with the Type
 identifier, and delimited by a single colon (ASCII 58).<a href="#section-7-4" class="pilcrow">¶</a></p>
@@ -1551,7 +1618,8 @@ format type identifier, together with the appropriate canonical textual
 representation of the Value.<a href="#section-7.1-2.1.1" class="pilcrow">¶</a></p>
 <p id="section-7.1-2.1.2">For Sub-Type codepoints with similar semantics across multiple high octets,
 it is <span class="bcp14">RECOMMENDED</span> to assign similar type identifiers.<a href="#section-7.1-2.1.2" class="pilcrow">¶</a></p>
-<p id="section-7.1-2.1.3">Identifiers assigned by IANA <span class="bcp14">MUST NOT</span> begin with <code>unknown-</code> or <code>experimental-</code>.<a href="#section-7.1-2.1.3" class="pilcrow">¶</a></p>
+<p id="section-7.1-2.1.3">Identifiers assigned by IANA <span class="bcp14">MUST NOT</span> begin with <code>unknown-</code>, <code>experimental-</code>
+or <code>malformed-</code>.<a href="#section-7.1-2.1.3" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-7.1-3">For experimental types, an implementation <span class="bcp14">MAY</span> locally assign an identifier
@@ -1578,7 +1646,7 @@ is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="
               <p id="section-7.2.1-2.1.1">2 octets of zeros (reserved)<a href="#section-7.2.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-7.2.1-2.2">
-              <p id="section-7.2.1-2.2.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>)<a href="#section-7.2.1-2.2.1" class="pilcrow">¶</a></p>
+              <p id="section-7.2.1-2.2.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>)<a href="#section-7.2.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-7.2.1-2.3">
               <p id="section-7.2.1-2.3.1">1 bit of satellite link flag (displayed as SAT if set to 1)<a href="#section-7.2.1-2.3.1" class="pilcrow">¶</a></p>
@@ -1588,7 +1656,7 @@ is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="
 </li>
           </ul>
 <p id="section-7.2.1-3">There are also special values which are represented by a single identifier
-from <a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
+from <a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>.<a href="#section-7.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-7.2.1-4">The parser <span class="bcp14">SHOULD</span> also accept discontinued country codes, possibly with a warning.<a href="#section-7.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-7.2.1-5">Example:<a href="#section-7.2.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1626,7 +1694,7 @@ unless specified otherwise.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
 is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="#section-7.3.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7.3.1-2.1">
-              <p id="section-7.3.1-2.1.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>)<a href="#section-7.3.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-7.3.1-2.1.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>)<a href="#section-7.3.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-7.3.1-2.2">
               <p id="section-7.3.1-2.2.1">1 bit of satellite link flag (displayed as SAT if set to 1)<a href="#section-7.3.1-2.2.1" class="pilcrow">¶</a></p>
@@ -1636,7 +1704,7 @@ is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="
 </li>
           </ul>
 <p id="section-7.3.1-3">There are also special values which are represented by a single identifier
-from <a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>.<a href="#section-7.3.1-3" class="pilcrow">¶</a></p>
+from <a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>.<a href="#section-7.3.1-3" class="pilcrow">¶</a></p>
 <p id="section-7.3.1-4">The parser <span class="bcp14">SHOULD</span> also accept discontinued country codes, possibly with a warning.<a href="#section-7.3.1-4" class="pilcrow">¶</a></p>
 <p id="section-7.3.1-5">Example:<a href="#section-7.3.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1674,7 +1742,7 @@ unless specified otherwise.<a href="#section-7.4-2" class="pilcrow">¶</a></p>
 is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="#section-7.4.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7.4.1-2.1">
-              <p id="section-7.4.1-2.1.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>)<a href="#section-7.4.1-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-7.4.1-2.1.1">5 bits of region identifier (<a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>)<a href="#section-7.4.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-7.4.1-2.2">
               <p id="section-7.4.1-2.2.1">1 bit of satellite link flag (displayed as SAT if set to 1)<a href="#section-7.4.1-2.2.1" class="pilcrow">¶</a></p>
@@ -1684,7 +1752,7 @@ is, by <span>[<a href="#RFC4384" class="cite xref">RFC4384</a>]</span>:<a href="
 </li>
           </ul>
 <p id="section-7.4.1-3">There are also special values which are represented by a single identifier
-from <a href="#data-collection-registry" class="auto internal xref">Section 9.3</a>.<a href="#section-7.4.1-3" class="pilcrow">¶</a></p>
+from <a href="#data-collection-registry" class="auto internal xref">Section 11.4</a>.<a href="#section-7.4.1-3" class="pilcrow">¶</a></p>
 <p id="section-7.4.1-4">The parser <span class="bcp14">SHOULD</span> also accept discontinued country codes, possibly with a warning.<a href="#section-7.4.1-4" class="pilcrow">¶</a></p>
 <p id="section-7.4.1-5">Example:<a href="#section-7.4.1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1738,7 +1806,7 @@ is updated such that the OSPF Route Type encoding states:<a href="#section-7.5.1
 OSPF Route type: 1 byte, using values in the Registry for OSPFv2 Link State (LS) Type, as specified by {{Section 5.5 of RFC4940}}.
 </pre><a href="#section-7.5.1-5" class="pilcrow">¶</a>
 </div>
-<p id="section-7.5.1-6">The Type is to be formatted as an identifier specified in <a href="#ospfv2-link-state-type-registry" class="auto internal xref">Section 9.5</a>.
+<p id="section-7.5.1-6">The Type is to be formatted as an identifier specified in <a href="#ospfv2-link-state-type-registry" class="auto internal xref">Section 11.6</a>.
 An unknown value of Type is to be formatted as a decimal number with no leading zeros.<a href="#section-7.5.1-6" class="pilcrow">¶</a></p>
 <p id="section-7.5.1-7">The Options shall be formatted as flags as specified in <a href="#basic-data-types" class="auto internal xref">Section 3.1</a>.
 Currently, the only flag specified is TYPE-2-METRIC.<a href="#section-7.5.1-7" class="pilcrow">¶</a></p>
@@ -1772,7 +1840,7 @@ anyway though, to keep the notion of its actual location.<a href="#section-7.5.2
 <a href="#section-7.5.3" class="section-number selfRef">7.5.3. </a><a href="#name-display-format-for-context-" class="section-name selfRef">Display format for Context-Specific Label Space ID</a>
           </h4>
 <p id="section-7.5.3-1">The actual structure of the Context-Specific Label Space ID Type (Type 0x0308) is,
-by <span>[<a href="#RFC9753" class="cite xref">RFC9753</a>]</span>, a 2-octet ID-Type (enumeration, see <a href="#context-specific-label-space-id-type" class="auto internal xref">Section 9.4</a>)
+by <span>[<a href="#RFC9753" class="cite xref">RFC9753</a>]</span>, a 2-octet ID-Type (enumeration, see <a href="#context-specific-label-space-id-type" class="auto internal xref">Section 11.5</a>)
 and a 4-octet ID-Value (integer).<a href="#section-7.5.3-1" class="pilcrow">¶</a></p>
 <p id="section-7.5.3-2">Note: For ID-Type zero (MPLS Label), <span><a href="https://rfc-editor.org/rfc/rfc9753#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC9753" class="cite xref">RFC9753</a>]</span>
 does not specify the value of the bottom 12 bits of the ID-Value. This document
@@ -1829,41 +1897,118 @@ followed by flags and sequence number.<a href="#section-7.6.3-1" class="pilcrow"
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="ipv6-address-specific-extended-community-attribute">
 <section id="section-8">
-      <h2 id="name-security-considerations">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-ipv6-address-specific-exten">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-ipv6-address-specific-exten" class="section-name selfRef">IPv6 Address Specific Extended Community Attribute</a>
       </h2>
-<p id="section-8-1">There are no security considerations in formatting the path attributes.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">The IPv6 Address Specific Extended Community Attribute <span>[<a href="#RFC5701" class="cite xref">RFC5701</a>]</span>
+is a set of 20-octet values with a complicated structure.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-8-2">
+<pre>
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| 0x00 or 0x40  |    Sub-Type   |    Global Administrator       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Global Administrator (cont.)                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Global Administrator (cont.)                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Global Administrator (cont.)                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Global Administrator (cont.)  |    Local Administrator        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</pre><a href="#section-8-2" class="pilcrow">¶</a>
+</div>
+<p id="section-8-3">The formatting of this attribute generally follows the same principle
+as the <code>EXTENDED_COMMUNITIES</code>, specified in <a href="#extended-communities-section" class="auto internal xref">Section 7</a>.
+Each value in the list is split to its semantic parts. All the parts are displayed in order,
+beginning with the Sub-Type identifier, and delimited by a single colon (ASCII 58).<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-4">If not specified otherwise, the Global Administrator field is displayed
+as an IPv6 address, and the Local Administrator is formatted as an integer
+(see <a href="#basic-data-types" class="auto internal xref">Section 3.1</a>). No alternative formatting is specified for any
+Sub-Type in this document.<a href="#section-8-4" class="pilcrow">¶</a></p>
+<p id="section-8-5">If the Sub-Type itself is unknown, it is formatted as <code>unknown-transitive</code> or
+<code>unknown-non-transitive</code> followed by the actual Sub-Type value formatted as
+hexadecimal, and then the Global and Local Administrator values as usual,<a href="#section-8-5" class="pilcrow">¶</a></p>
+<div id="future-ipv6-address-specific-extended-community-sub-type-definitions">
+<section id="section-8.1">
+        <h3 id="name-future-ipv6-address-specifi">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-future-ipv6-address-specifi" class="section-name selfRef">Future IPv6 Address Specific Extended Community Sub-Type definitions</a>
+        </h3>
+<p id="section-8.1-1">Every new definition of an IPv6 Address Specific Extended Community Sub-Type
+<span class="bcp14">MUST</span> include its enumeration
+value identifier and a specification of canonical textual representation
+of the value. Hereby, a paragraph shall be appended
+to the <span><a href="https://rfc-editor.org/rfc/rfc5701#section-3" class="relref">Section 3</a> of [<a href="#RFC5701" class="cite xref">RFC5701</a>]</span>:<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="section-8.1-2.1">
+            <p id="section-8.1-2.1.1">Every Sub-Type codepoint defined <span class="bcp14">MUST</span> specify a unique value of the display
+format type identifier, together with the appropriate canonical textual
+representation of the Value.<a href="#section-8.1-2.1.1" class="pilcrow">¶</a></p>
+<p id="section-8.1-2.1.2">For Sub-Type codepoints with similar semantics differing only by the transitivity,
+it is <span class="bcp14">RECOMMENDED</span> to assign similar type identifiers.<a href="#section-8.1-2.1.2" class="pilcrow">¶</a></p>
+<p id="section-8.1-2.1.3">Identifiers assigned by IANA <span class="bcp14">MUST NOT</span> begin with <code>unknown-</code>, <code>experimental-</code>
+or <code>malformed-</code>.<a href="#section-8.1-2.1.3" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-8.1-3">For experimental types, an implementation <span class="bcp14">MAY</span> locally assign an identifier
+beginning with <code>experimental-</code>, and format these appropriately.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="largecommunity-attribute">
+<section id="section-9">
+      <h2 id="name-large_community-attribute">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-large_community-attribute" class="section-name selfRef"><code>LARGE_COMMUNITY</code> Attribute</a>
+      </h2>
+<p id="section-9-1">The <code>LARGE_COMMUNITY</code> attribute <span>[<a href="#RFC8092" class="cite xref">RFC8092</a>]</span> is a set of uint32 triplets.
+First of these is an AS number (Global Administrator), and the two others bear
+no special semantics.<a href="#section-9-1" class="pilcrow">¶</a></p>
+<p id="section-9-2">While this attribute could be modeled easily as a set of uint32 triplets, people tend
+to display large communities in a similar way to Communities (<a href="#communities-section" class="auto internal xref">Section 6</a>)
+and Extended Communities (<a href="#extended-communities-section" class="auto internal xref">Section 7</a>), and therefore
+it is acceptable to display each triplet as a set of three integers separated by colons
+(ASCII 58).<a href="#section-9-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-10">
+      <h2 id="name-security-considerations">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-10-1">There are no security considerations in formatting the path attributes.<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-9">
+<section id="section-11">
       <h2 id="name-iana-considerations">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <div id="bgp-well-known-communities">
-<section id="section-9.1">
+<section id="section-11.1">
         <h3 id="name-bgp-well-known-communities">
-<a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-bgp-well-known-communities" class="section-name selfRef">BGP Well-known Communities</a>
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-bgp-well-known-communities" class="section-name selfRef">BGP Well-known Communities</a>
         </h3>
-<p id="section-9.1-1">IANA is requested to rename the "Standby PE" BGP community value (<code>0xFFFF0009</code>)
-to <code>STANDBY_PE</code>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1-1">IANA is requested to rename the "Standby PE" BGP community value (<code>0xFFFF0009</code>)
+to <code>STANDBY_PE</code>.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="registries-for-bgp-extended-communities">
-<section id="section-9.2">
+<section id="section-11.2">
         <h3 id="name-registries-for-bgp-extended">
-<a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-registries-for-bgp-extended" class="section-name selfRef">Registries for BGP Extended Communities</a>
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-registries-for-bgp-extended" class="section-name selfRef">Registries for BGP Extended Communities</a>
         </h3>
-<p id="section-9.2-1">IANA is requested to add a column "Identifier" to all the Sub-Type registries
+<p id="section-11.2-1">IANA is requested to add a column "Identifier" to all the Sub-Type registries
 as specified in <span><a href="https://rfc-editor.org/rfc/rfc7153#section-5.2" class="relref">Section 5.2</a> of [<a href="#RFC7153" class="cite xref">RFC7153</a>]</span>. The identifiers <span class="bcp14">MUST NOT</span>
-be reused in any other Sub-Type registries, unless explicitly specified.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
-<p id="section-9.2-2">The following data should be used to fill the newly added columns.<a href="#section-9.2-2" class="pilcrow">¶</a></p>
+be reused in any other Sub-Type registries, unless explicitly specified.<a href="#section-11.2-1" class="pilcrow">¶</a></p>
+<p id="section-11.2-2">The following data should be used to fill the newly added columns.<a href="#section-11.2-2" class="pilcrow">¶</a></p>
 <div id="ec-registry-0x00">
-<section id="section-9.2.1">
+<section id="section-11.2.1">
           <h4 id="name-transitive-two-octet-as-spe">
-<a href="#section-9.2.1" class="section-number selfRef">9.2.1. </a><a href="#name-transitive-two-octet-as-spe" class="section-name selfRef">Transitive Two-Octet AS-Specific Extended Community Sub-Types</a>
+<a href="#section-11.2.1" class="section-number selfRef">11.2.1. </a><a href="#name-transitive-two-octet-as-spe" class="section-name selfRef">Transitive Two-Octet AS-Specific Extended Community Sub-Types</a>
           </h4>
 <table class="center" id="table-1">
             <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
@@ -1910,9 +2055,9 @@ be reused in any other Sub-Type registries, unless explicitly specified.<a href=
 </section>
 </div>
 <div id="ec-registry-0x01">
-<section id="section-9.2.2">
+<section id="section-11.2.2">
           <h4 id="name-transitive-ipv4-address-spe">
-<a href="#section-9.2.2" class="section-number selfRef">9.2.2. </a><a href="#name-transitive-ipv4-address-spe" class="section-name selfRef">Transitive IPv4-Address-Specific Extended Community Sub-Types</a>
+<a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-transitive-ipv4-address-spe" class="section-name selfRef">Transitive IPv4-Address-Specific Extended Community Sub-Types</a>
           </h4>
 <table class="center" id="table-2">
             <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
@@ -1966,13 +2111,13 @@ be reused in any other Sub-Type registries, unless explicitly specified.<a href=
               </tr>
             </tbody>
           </table>
-<p id="section-9.2.2-2">The IANA is hereby requested to fix the typo at 0x07 Name.<a href="#section-9.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-11.2.2-2">The IANA is hereby requested to fix the typo at 0x07 Name.<a href="#section-11.2.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ec-registry-0x02">
-<section id="section-9.2.3">
+<section id="section-11.2.3">
           <h4 id="name-transitive-four-octet-as-sp">
-<a href="#section-9.2.3" class="section-number selfRef">9.2.3. </a><a href="#name-transitive-four-octet-as-sp" class="section-name selfRef">Transitive Four-Octet AS-Specific Extended Community Sub-Types</a>
+<a href="#section-11.2.3" class="section-number selfRef">11.2.3. </a><a href="#name-transitive-four-octet-as-sp" class="section-name selfRef">Transitive Four-Octet AS-Specific Extended Community Sub-Types</a>
           </h4>
 <table class="center" id="table-3">
             <caption><a href="#table-3" class="selfRef">Table 3</a></caption>
@@ -2014,9 +2159,9 @@ be reused in any other Sub-Type registries, unless explicitly specified.<a href=
 </section>
 </div>
 <div id="ec-registry-0x03">
-<section id="section-9.2.4">
+<section id="section-11.2.4">
           <h4 id="name-transitive-opaque-extended-">
-<a href="#section-9.2.4" class="section-number selfRef">9.2.4. </a><a href="#name-transitive-opaque-extended-" class="section-name selfRef">Transitive Opaque Extended Community Sub-Types</a>
+<a href="#section-11.2.4" class="section-number selfRef">11.2.4. </a><a href="#name-transitive-opaque-extended-" class="section-name selfRef">Transitive Opaque Extended Community Sub-Types</a>
           </h4>
 <table class="center" id="table-4">
             <caption><a href="#table-4" class="selfRef">Table 4</a></caption>
@@ -2065,15 +2210,15 @@ be reused in any other Sub-Type registries, unless explicitly specified.<a href=
               </tr>
             </tbody>
           </table>
-<p id="section-9.2.4-2">IANA is hereby requested to fix the reference in "Transitive Opaque Extended
-Community Sub-Types" table from Yakov Rekhter to <span>[<a href="#RFC7432" class="cite xref">RFC7432</a>]</span>.<a href="#section-9.2.4-2" class="pilcrow">¶</a></p>
-<p id="section-9.2.4-3">(TODO)<a href="#section-9.2.4-3" class="pilcrow">¶</a></p>
+<p id="section-11.2.4-2">IANA is hereby requested to fix the reference in "Transitive Opaque Extended
+Community Sub-Types" table from Yakov Rekhter to <span>[<a href="#RFC7432" class="cite xref">RFC7432</a>]</span>.<a href="#section-11.2.4-2" class="pilcrow">¶</a></p>
+<p id="section-11.2.4-3">(TODO)<a href="#section-11.2.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ec-registry-0x06">
-<section id="section-9.2.5">
+<section id="section-11.2.5">
           <h4 id="name-evpn-extended-community-sub">
-<a href="#section-9.2.5" class="section-number selfRef">9.2.5. </a><a href="#name-evpn-extended-community-sub" class="section-name selfRef">EVPN Extended Community Sub-Types</a>
+<a href="#section-11.2.5" class="section-number selfRef">11.2.5. </a><a href="#name-evpn-extended-community-sub" class="section-name selfRef">EVPN Extended Community Sub-Types</a>
           </h4>
 <table class="center" id="table-5">
             <caption><a href="#table-5" class="selfRef">Table 5</a></caption>
@@ -2157,20 +2302,62 @@ Community Sub-Types" table from Yakov Rekhter to <span>[<a href="#RFC7432" class
               </tr>
             </tbody>
           </table>
-<p id="section-9.2.5-2">(TODO)<a href="#section-9.2.5-2" class="pilcrow">¶</a></p>
+<p id="section-11.2.5-2">(TODO)<a href="#section-11.2.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
+</section>
+</div>
+<div id="ecv6-registry-0x00">
+<section id="section-11.3">
+        <h3 id="name-transitive-ipv6-address-spe">
+<a href="#section-11.3" class="section-number selfRef">11.3. </a><a href="#name-transitive-ipv6-address-spe" class="section-name selfRef">Transitive IPv6-Address-Specific Extended Community Sub-Types</a>
+        </h3>
+<p id="section-11.3-1">In the same set of registries as Extended Communities, there is an IPv6-Address Specific
+Extended Community Sub-Types Registry. IANA is requested to add a column "Identifier"
+to this registry, which is populated as follows:<a href="#section-11.3-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-6">
+          <caption><a href="#table-6" class="selfRef">Table 6</a></caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Type Value</th>
+              <th class="text-left" rowspan="1" colspan="1">Name</th>
+              <th class="text-left" rowspan="1" colspan="1">Identifier</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0x0002</td>
+              <td class="text-left" rowspan="1" colspan="1">Route Target</td>
+              <td class="text-left" rowspan="1" colspan="1">route-target-ipv6</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0x0003</td>
+              <td class="text-left" rowspan="1" colspan="1">Route Origin</td>
+              <td class="text-left" rowspan="1" colspan="1">route-origin-ipv6</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0x000B</td>
+              <td class="text-left" rowspan="1" colspan="1">VRF Route Import</td>
+              <td class="text-left" rowspan="1" colspan="1">vrf-route-import-ipv6</td>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0x0012</td>
+              <td class="text-left" rowspan="1" colspan="1">Inter-Area P2MP Segmented Next-Hop</td>
+              <td class="text-left" rowspan="1" colspan="1">p2mp-inter-area-segmented-nh-ipv6</td>
+            </tr>
+          </tbody>
+        </table>
 </section>
 </div>
 <div id="data-collection-registry">
-<section id="section-9.3">
+<section id="section-11.4">
         <h3 id="name-registry-for-bgp-data-colle">
-<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-registry-for-bgp-data-colle" class="section-name selfRef">Registry for BGP Data Collection Communities</a>
+<a href="#section-11.4" class="section-number selfRef">11.4. </a><a href="#name-registry-for-bgp-data-colle" class="section-name selfRef">Registry for BGP Data Collection Communities</a>
         </h3>
-<p id="section-9.3-1">IANA is requested to add a column "Identifier" to the BGP Data Collection
-Standard Communities Registry, which is populated as follows:<a href="#section-9.3-1" class="pilcrow">¶</a></p>
-<table class="center" id="table-6">
-          <caption><a href="#table-6" class="selfRef">Table 6</a></caption>
+<p id="section-11.4-1">IANA is requested to add a column "Identifier" to the BGP Data Collection
+Standard Communities Registry, which is populated as follows:<a href="#section-11.4-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-7">
+          <caption><a href="#table-7" class="selfRef">Table 7</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Value</th>
@@ -2211,10 +2398,10 @@ Standard Communities Registry, which is populated as follows:<a href="#section-9
             </tr>
           </tbody>
         </table>
-<p id="section-9.3-3">IANA is requested to add a column "Identifier" to the Region Identifiers Registry,
-which is populated as follows:<a href="#section-9.3-3" class="pilcrow">¶</a></p>
-<table class="center" id="table-7">
-          <caption><a href="#table-7" class="selfRef">Table 7</a></caption>
+<p id="section-11.4-3">IANA is requested to add a column "Identifier" to the Region Identifiers Registry,
+which is populated as follows:<a href="#section-11.4-3" class="pilcrow">¶</a></p>
+<table class="center" id="table-8">
+          <caption><a href="#table-8" class="selfRef">Table 8</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Value</th>
@@ -2263,15 +2450,15 @@ which is populated as follows:<a href="#section-9.3-3" class="pilcrow">¶</a></p
 </section>
 </div>
 <div id="context-specific-label-space-id-type">
-<section id="section-9.4">
+<section id="section-11.5">
         <h3 id="name-registry-for-context-specif">
-<a href="#section-9.4" class="section-number selfRef">9.4. </a><a href="#name-registry-for-context-specif" class="section-name selfRef">Registry for Context-Specific Label Space ID Type</a>
+<a href="#section-11.5" class="section-number selfRef">11.5. </a><a href="#name-registry-for-context-specif" class="section-name selfRef">Registry for Context-Specific Label Space ID Type</a>
         </h3>
-<p id="section-9.4-1">IANA is requested to add a column "Identifier" to the
+<p id="section-11.5-1">IANA is requested to add a column "Identifier" to the
 Context-Specific Label Space ID Type Registry,
-which is populated as follows:<a href="#section-9.4-1" class="pilcrow">¶</a></p>
-<table class="center" id="table-8">
-          <caption><a href="#table-8" class="selfRef">Table 8</a></caption>
+which is populated as follows:<a href="#section-11.5-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-9">
+          <caption><a href="#table-9" class="selfRef">Table 9</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Value</th>
@@ -2290,14 +2477,14 @@ which is populated as follows:<a href="#section-9.4-1" class="pilcrow">¶</a></p
 </section>
 </div>
 <div id="ospfv2-link-state-type-registry">
-<section id="section-9.5">
+<section id="section-11.6">
         <h3 id="name-registry-for-ospfv2-link-st">
-<a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-registry-for-ospfv2-link-st" class="section-name selfRef">Registry for OSPFv2 Link State (LS) Type</a>
+<a href="#section-11.6" class="section-number selfRef">11.6. </a><a href="#name-registry-for-ospfv2-link-st" class="section-name selfRef">Registry for OSPFv2 Link State (LS) Type</a>
         </h3>
-<p id="section-9.5-1">IANA is requested to add a column "Identifier" to the OSPFv2 Link State (LS)
-Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</span>, which is populated as follows:<a href="#section-9.5-1" class="pilcrow">¶</a></p>
-<table class="center" id="table-9">
-          <caption><a href="#table-9" class="selfRef">Table 9</a></caption>
+<p id="section-11.6-1">IANA is requested to add a column "Identifier" to the OSPFv2 Link State (LS)
+Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</span>, which is populated as follows:<a href="#section-11.6-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-10">
+          <caption><a href="#table-10" class="selfRef">Table 10</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Value</th>
@@ -2363,14 +2550,14 @@ Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-10">
+<section id="section-12">
       <h2 id="name-references">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-10.1">
+<section id="section-12.1">
         <h3 id="name-normative-references">
-<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="ISO.3166-1.2006">[ISO.3166-1.2006]</dt>
@@ -2388,6 +2575,10 @@ Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</
 <dt id="RFC4271">[RFC4271]</dt>
         <dd>
 <span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4271">https://www.rfc-editor.org/rfc/rfc4271</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4291">[RFC4291]</dt>
+        <dd>
+<span class="refAuthor">Hinden, R.</span> and <span class="refAuthor">S. Deering</span>, <span class="refTitle">"IP Version 6 Addressing Architecture"</span>, <span class="seriesInfo">RFC 4291</span>, <span class="seriesInfo">DOI 10.17487/RFC4291</span>, <time datetime="2006-02" class="refDate">February 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4291">https://www.rfc-editor.org/rfc/rfc4291</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC4360">[RFC4360]</dt>
         <dd>
@@ -2412,6 +2603,14 @@ Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</
 <dt id="RFC5668">[RFC5668]</dt>
         <dd>
 <span class="refAuthor">Rekhter, Y.</span>, <span class="refAuthor">Sangli, S.</span>, and <span class="refAuthor">D. Tappan</span>, <span class="refTitle">"4-Octet AS Specific BGP Extended Community"</span>, <span class="seriesInfo">RFC 5668</span>, <span class="seriesInfo">DOI 10.17487/RFC5668</span>, <time datetime="2009-10" class="refDate">October 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5668">https://www.rfc-editor.org/rfc/rfc5668</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5701">[RFC5701]</dt>
+        <dd>
+<span class="refAuthor">Rekhter, Y.</span>, <span class="refTitle">"IPv6 Address Specific BGP Extended Community Attribute"</span>, <span class="seriesInfo">RFC 5701</span>, <span class="seriesInfo">DOI 10.17487/RFC5701</span>, <time datetime="2009-11" class="refDate">November 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5701">https://www.rfc-editor.org/rfc/rfc5701</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6368">[RFC6368]</dt>
+        <dd>
+<span class="refAuthor">Marques, P.</span>, <span class="refAuthor">Raszuk, R.</span>, <span class="refAuthor">Patel, K.</span>, <span class="refAuthor">Kumaki, K.</span>, and <span class="refAuthor">T. Yamagata</span>, <span class="refTitle">"Internal BGP as the Provider/Customer Edge Protocol for BGP/MPLS IP Virtual Private Networks (VPNs)"</span>, <span class="seriesInfo">RFC 6368</span>, <span class="seriesInfo">DOI 10.17487/RFC6368</span>, <time datetime="2011-09" class="refDate">September 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6368">https://www.rfc-editor.org/rfc/rfc6368</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7153">[RFC7153]</dt>
         <dd>
@@ -2457,9 +2656,9 @@ Type, as specified in <span>[<a href="#RFC4940" class="cite xref">RFC4940</a>]</
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-10.2">
+<section id="section-12.2">
         <h3 id="name-informative-references">
-<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.knoll-idr-cos-interconnect">[I-D.knoll-idr-cos-interconnect]</dt>
