@@ -1,3 +1,5 @@
+export UPLOAD_EMAIL ?= ietf.org@jmq.cz
+
 LIBDIR := lib
 -include $(LIBDIR)/main.mk
 
