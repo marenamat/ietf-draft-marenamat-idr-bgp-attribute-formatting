@@ -32,12 +32,15 @@ author:
 normative:
  RFC1997: bgp-communities
  RFC4271: bgp
+ RFC4291: ipv6-addressing
  RFC4384: bgp-communities-for-data-collection
  RFC4360: bgp-extended-communities
  RFC4577: bgp-ospf-pe
  RFC4760: bgp-multiprotocol
  RFC4940: ospf-iana-considerations
  RFC5668: bgp-as4-ec
+ RFC5701: bgp-extended-communities-ipv6
+ RFC6368: ibgp-vpn-pece
  RFC7153: bgp-ec-registry
  RFC7432: bgp-evpn
  RFC7543: cp-orf
@@ -164,7 +167,14 @@ semantics was dependent on the letter case.
 5. Values specified to be displayed in hexadecimal SHOULD be displayed padded by
    zeros to all significant bits.
 
-6. Values specified as reserved SHOULD NOT be displayed (should be skipped).
+6. IPv6 addresses SHOULD be displayed in the short form, as specified in
+   {{Section 2.2 of -ipv6-addressing}}, paragraph 2, and if not standalone, they SHOULD be
+   surrounded by square braces (ASCII 91 and 93).
+
+7. IPv4 addresses SHOULD be displayed in the standard form of four integers
+   (see above) delimited by dots (ASCII 46).
+
+8. Values specified as reserved SHOULD NOT be displayed (should be skipped).
    If these values are set to non-default values, the whole containing
    attribute structure SHOULD be displayed as a sequence of octets in hexadecimal,
    prefixed by `malformed`. The implementation MAY have configuration options
@@ -185,13 +195,17 @@ Their formatting is either obvious or straightforward to model coherently.
 - Type 10 – `CLUSTER_LIST`
 - Type 22 – `PMSI_TUNNEL`
 - Type 23 – Tunnel Encapsulation
-- Type 25 – Traffic Engineering
+- Type 24 – Traffic Engineering
 - Type 26 – AIGP
 - Type 27 – PE Distinguisher Labels
 - Type 29 – Link State
 - Type 33 – BGPsec Path
 - Type 35 – Only to Customer
-- Type 36 – SFP
+- Type 37 – SFP
+- Type 38 – BFD Discriminator
+- Type 40 – Prefix-SID
+- Type 41 – BIER
+- Type 128 – `ATTR_SET`
 
 For example, many of these are just an integer, and even a very complex
 attribute like `PMSI_TUNNEL` can be modelled as a key-value structure.
@@ -249,7 +263,7 @@ The semantics stays the same.
 
 Example: `65544:6767`, `BLACKHOLE`
 
-# `EXTENDED_COMMUNITIES` Attribute {#extended-communitites-section}
+# `EXTENDED_COMMUNITIES` Attribute {#extended-communities-section}
 
 The `EXTENDED_COMMUNITIES` attribute {{-bgp-extended-communities}} is a set of
 uint64 values with a complicated structure. Copying a modified schema from
@@ -269,7 +283,7 @@ therefore it is assumed that the Type is always extended to 2 octets.
 
 Commonly, the lower octet of the Type is called Sub-Type, as in {{-bgp-ec-registry}}.
 
-The canonical formatting is the Type displayed as an enumeration value,
+The canonical formatting of each value is the Type displayed as an enumeration value,
 and then the Value split to its semantic parts, as specified in following
 subsections. All the parts are displayed in order, beginning with the Type
 identifier, and delimited by a single colon (ASCII 58).
@@ -296,7 +310,8 @@ to the {{Section 4 of -bgp-ec-registry}}:
 > For Sub-Type codepoints with similar semantics across multiple high octets,
 > it is RECOMMENDED to assign similar type identifiers.
 >
-> Identifiers assigned by IANA MUST NOT begin with `unknown-` or `experimental-`.
+> Identifiers assigned by IANA MUST NOT begin with `unknown-`, `experimental-`
+> or `malformed-`.
 
 For experimental types, an implementation MAY locally assign an identifier
 beginning with `experimental-`, and format these appropriately.
@@ -493,6 +508,59 @@ Generic Transitive Extended Community Part 2 (Type 0x81)
 Generic Transitive Extended Community Part 3 (Type 0x82)
 -->
 
+# IPv6 Address Specific Extended Community Attribute
+
+The IPv6 Address Specific Extended Community Attribute {{-bgp-extended-communities-ipv6}}
+is a set of 20-octet values with a complicated structure.
+
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    | 0x00 or 0x40  |    Sub-Type   |    Global Administrator       |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |          Global Administrator (cont.)                         |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |          Global Administrator (cont.)                         |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |          Global Administrator (cont.)                         |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    | Global Administrator (cont.)  |    Local Administrator        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+The formatting of this attribute generally follows the same principle
+as the `EXTENDED_COMMUNITIES`, specified in {{extended-communities-section}}.
+Each value in the list is split to its semantic parts. All the parts are displayed in order,
+beginning with the Sub-Type identifier, and delimited by a single colon (ASCII 58).
+
+If not specified otherwise, the Global Administrator field is displayed
+as an IPv6 address, and the Local Administrator is formatted as an integer
+(see {{basic-data-types}}). No alternative formatting is specified for any
+Sub-Type in this document.
+
+If the Sub-Type itself is unknown, it is formatted as `unknown-transitive` or
+`unknown-non-transitive` followed by the actual Sub-Type value formatted as
+hexadecimal, and then the Global and Local Administrator values as usual,
+
+## Future IPv6 Address Specific Extended Community Sub-Type definitions
+
+Every new definition of an IPv6 Address Specific Extended Community Sub-Type
+MUST include its enumeration
+value identifier and a specification of canonical textual representation
+of the value. Hereby, a paragraph shall be appended
+to the {{Section 3 of -bgp-extended-communities-ipv6}}:
+
+> Every Sub-Type codepoint defined MUST specify a unique value of the display
+> format type identifier, together with the appropriate canonical textual
+> representation of the Value.
+>
+> For Sub-Type codepoints with similar semantics differing only by the transitivity,
+> it is RECOMMENDED to assign similar type identifiers.
+>
+> Identifiers assigned by IANA MUST NOT begin with `unknown-`, `experimental-`
+> or `malformed-`.
+
+For experimental types, an implementation MAY locally assign an identifier
+beginning with `experimental-`, and format these appropriately.
 
 # `LARGE_COMMUNITY` Attribute
 
@@ -599,6 +667,19 @@ Community Sub-Types" table from Yakov Rekhter to {{-bgp-evpn}}.
 | 0x0F           | Service Carving Time    | evpn-sct          |
 
 (TODO)
+
+## Transitive IPv6-Address-Specific Extended Community Sub-Types {#ecv6-registry-0x00}
+
+In the same set of registries as Extended Communities, there is an IPv6-Address Specific
+Extended Community Sub-Types Registry. IANA is requested to add a column "Identifier"
+to this registry, which is populated as follows:
+
+| Type Value | Name                                | Identifier                         |
+|------------|-------------------------------------|------------------------------------|
+| 0x0002     | Route Target                        | route-target-ipv6                  |
+| 0x0003     | Route Origin                        | route-origin-ipv6                  |
+| 0x000B     | VRF Route Import                    | vrf-route-import-ipv6              |
+| 0x0012     | Inter-Area P2MP Segmented Next-Hop  | p2mp-inter-area-segmented-nh-ipv6  |
 
 ## Registry for BGP Data Collection Communities {#data-collection-registry}
 
